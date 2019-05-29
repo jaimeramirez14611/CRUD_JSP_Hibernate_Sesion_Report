@@ -26,8 +26,8 @@
 		</property>
 		
 		<!-- Resource Mapping -->
-		<!--mapping class="com.cds.model.Customer"/>
-		<mapping class="com.cds.model.Service"/-->
+		<mapping class="com.cds.model.Customer"/>
+		<mapping class="com.cds.model.Service"/>
 		
 	</session-factory>
 </hibernate-configuration>
