@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  * Servlet Filter implementation class testFilter
  * https://stackoverflow.com/questions/49547/how-to-control-web-page-caching-across-all-browsers
  */
-@WebFilter(urlPatterns = { "*", "/login"})
+@WebFilter(urlPatterns = {/* "*", "/login"*/})
 public class UrlFilter implements Filter {
 
     /**

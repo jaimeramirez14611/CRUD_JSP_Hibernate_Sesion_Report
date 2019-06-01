@@ -6,11 +6,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.cds.util.ValidateNullPointer;
+import com.cds.daoImp.CustomerDaoImpl;
+import com.cds.model.Customer;
 
 /**
  * Servlet implementation class AddCustomerController
  */
-@WebServlet("/AddCustomer")
+@WebServlet("/addCustomer")
 public class AddCustomerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,8 +36,22 @@ public class AddCustomerController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		String first_name = ValidateNullPointer.validateToString(request.getParameter("first_name"));
+		String last_name = ValidateNullPointer.validateToString(request.getParameter("last_name"));
+		String email = ValidateNullPointer.validateToString(request.getParameter("email"));
+		String mobile = ValidateNullPointer.validateToString(request.getParameter("mobile"));
+		CustomerDaoImpl customerDao = new CustomerDaoImpl();
+		
+		if(first_name.equals("") ||last_name.equals("") || email.equals("")||mobile.equals("")) {
+			  request.setAttribute("datos", "ERROR: VERIFIQUE LOS CAMPOS INGRESADOS");
+		}else {
+			Customer customer = new Customer(first_name, last_name, email, mobile);
+			customerDao.saveCustomer(customer);
+			request.setAttribute("datos", "Datos Agregados");
+		}
+		
+		request.getRequestDispatcher("./Views/Customer/addCustomer.jsp").forward(request, response);
 
+	}
+	
 }
