@@ -43,11 +43,11 @@ public class AddCustomerController extends HttpServlet {
 		CustomerDaoImpl customerDao = new CustomerDaoImpl();
 		
 		if(first_name.equals("") ||last_name.equals("") || email.equals("")||mobile.equals("")) {
-			  request.setAttribute("datos", "ERROR: VERIFIQUE LOS CAMPOS INGRESADOS");
+			  request.setAttribute("error", "ERROR: VERIFIQUE LOS CAMPOS INGRESADOS");
 		}else {
 			Customer customer = new Customer(first_name, last_name, email, mobile);
 			customerDao.saveCustomer(customer);
-			request.setAttribute("datos", "Datos Agregados");
+			request.setAttribute("success", "DATOS AGREGADOS DE FORMA SATISFACTORIA");
 		}
 		
 		request.getRequestDispatcher("./Views/Customer/addCustomer.jsp").forward(request, response);

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="p" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- https://www.ecodeup.com/como-usar-la-libreria-jstl-en-paginas-jsp/ -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,23 +31,21 @@
 </style>
 </head>
 <body class="container">
+      <!-- navbar -->
       <jsp:include page="../Componentes/navbar.jsp" />
       
       <h1 class="text-center mt-fixed-nav">AGREGAR CUSTOMER</h1>
-     
-       
-      <%  
-        //String respuesta = request.getParameter("datos");
-        //out.print(respuesta);   
-        String html = "<section class='alert alert-primary col-4 offset-4 text-center ' role='alert' id='alerta'>";
-        out.print(html);  
-      %>
-      <span>${datos}</span>
-      <%
-      String resp2 = "</section>;";
-      out.print(resp2); 
-      %>
-       
+      
+      <!-- Validacion de mensaje de error -->
+      <c:if test="${error != null}">
+        	<c:out value="<section class='alert alert-danger col-4 offset-4 text-center ' role='alert' id='alerta'> ${error} </section>" escapeXml="false"></c:out>
+      
+      <!-- Validacion de mensaje de dato agregado -->
+      </c:if>
+      
+      <c:if test="${success != null}">
+        	<c:out value="<section class='alert alert-success col-4 offset-4 text-center ' role='alert' id='alerta'> ${success} </section>" escapeXml="false"></c:out>
+      </c:if>
       
       <section>
            <form action="/CRUD_JSP_Hibernate_Sesion_Report/addCustomer" method="POST" class="col-8 offset-2" id="frmCustomer">
@@ -71,17 +70,7 @@
 				<input type="reset" class="btn btn-outline-danger col-2" value="Reset">
 	     </form>
       </section>
-	  <script type="text/javascript">
-	  //Oculta la seccion despues de x tiempo
-	  let stateCheck = setInterval(() => {
-		  if (document.readyState === 'complete') {
-		    clearInterval(stateCheck);
-		    // document ready
-		    var el = document.getElementById("alerta");
-		    el.style.display = (el.style.display == 'none') ? 'block' : 'none';
-		  }
-		}, 10000);
-	   console.log(stateCheck+"pp");
-      </script>
+      <!-- Ocultar alert -->
+	  <script type="text/javascript" src="resources/js/hideAlert.js" ></script>
 </body>
 </html>
