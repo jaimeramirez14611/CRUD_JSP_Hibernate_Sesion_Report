@@ -11,7 +11,7 @@ import java.util.Map;
 import com.cds.model.Service;
 
 public interface ServiceDao {
-	Long saveService(Service service);
+	Long saveService(Service service) ;
 	List<Map<String, String>> findAllService();
     Long deleteService(Long id); 
 	Long updateService(Service service);  

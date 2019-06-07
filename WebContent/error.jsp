@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+   <h1 class="NOMBRE" id="ID">
+   	<p class="clase" id="id"></p>
+   </h1>
   error
 </body>
 </html>

@@ -27,4 +27,12 @@ public class ValidateNullPointer {
 		
 		return response;
 	}
+	public static long validateToLong(String string) {
+		long response = 0l;
+		   //Regresa un ""    
+		if(validateToString(string) != "") {
+			response = Long.parseLong(string);
+		}
+		return response;
+	}
 }

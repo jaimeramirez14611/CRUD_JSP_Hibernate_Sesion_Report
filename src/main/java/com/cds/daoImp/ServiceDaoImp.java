@@ -29,26 +29,32 @@ public class ServiceDaoImp implements ServiceDao{
 	
 	@Override
 	public Long saveService(Service service) {
+		Long id = 0l;
+		long customer_id = 0l;
 		
+		//OPEN SESSION WHIT HIBERNATE
 		Session session = this.sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
-		Long id = 0l;
+		CustomerDaoImpl customerDao = new CustomerDaoImpl(); 
 		
+		try {/*valida que el usuario exista en la base de datos*/
+			 customer_id = customerDao.findCustomerById(service.getCustomer().getCustomer_id()).getCustomer_id();
+		}catch (Exception e) {
+			 System.out.println("ERROR_DATA_NOT_EXIST"+e);
+		}
+
 		try {
-			
-		    id = (Long)session.save(service);
-			transaction.commit();
-			
+			if(customer_id != 0l) {//IF CUSTOMER EXIST
+				 id = (Long) session.save(service);
+		         transaction.commit();
+			}//PASS  	
 		} catch (Exception e) {
-			
+			System.out.println("ERROR_TO_SAVE_SERVICE:"+e);
 			transaction.rollback();
-			
 		}finally {
-			
 			session.clear(); //Investigar sobre esto
 			session.close();
 		}
-		
 		return id;	
 	}
 	
@@ -198,10 +204,10 @@ public class ServiceDaoImp implements ServiceDao{
 		//test  add
 		/*ServiceDaoImp servicedao = new ServiceDaoImp();
 		Customer customer = new Customer();
-		customer.setCustomer_id((long)2);
+		customer.setCustomer_id((long)571);
 		Service service = new Service("test","00", "niula",customer );
 		long resultado = servicedao.saveService(service);
-		System.out.println(resultado);	*/
+		System.out.println(resultado);*/
 		
 		
 		  //test to list
@@ -229,8 +235,4 @@ public class ServiceDaoImp implements ServiceDao{
 		System.out.println(resultado);*/
 	}
 
-
-
-	
-	
 }

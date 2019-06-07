@@ -32,8 +32,17 @@ public class CustomerDaoImpl implements CustomerDao {
 	
 	@Override
 	public Customer findCustomerById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		 Session session = this.sessionFactory.openSession();
+		 Customer customer = null;
+		 try {
+			 customer = new Customer();
+			 customer = session.load(Customer.class, id);
+		} catch (Exception e) {
+			 System.out.println("------------null---------");
+			 
+		}
+		
+		 return customer;
 	}
 	@Override
 	public List<Customer> findAllCustomers() {

@@ -46,7 +46,9 @@ public class AddCustomerController extends HttpServlet {
 			  request.setAttribute("error", "ERROR: VERIFIQUE LOS CAMPOS INGRESADOS");
 		}else {
 			Customer customer = new Customer(first_name, last_name, email, mobile);
-			customerDao.saveCustomer(customer);
+			
+		    customerDao.saveCustomer(customer);
+			
 			request.setAttribute("success", "DATOS AGREGADOS DE FORMA SATISFACTORIA");
 		}
 		

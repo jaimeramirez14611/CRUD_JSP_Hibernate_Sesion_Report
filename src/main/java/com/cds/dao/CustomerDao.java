@@ -12,7 +12,7 @@ import com.cds.model.Customer;
 
 public interface CustomerDao {
 	
-	Long saveCustomer(Customer customer);
+	Long saveCustomer(Customer customer) ;
 	
 	Customer findCustomerById(Long id);
 
