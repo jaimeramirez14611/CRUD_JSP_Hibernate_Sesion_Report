@@ -29,7 +29,19 @@ public class AddCustomerController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/Views/Customer/addCustomer.jsp").forward(request, response);
+		String action = ValidateNullPointer.validateToString(request.getParameter("action"));
+		switch (action) {
+		case "index":
+			request.getRequestDispatcher("/Views/Customer/addCustomer.jsp").forward(request, response);
+			break;
+       case "list":
+    	  // request.getRequestDispatcher("/Views/Customer/addCustomer.jsp").forward(request, response);
+			break;		
+
+		default:
+			break;
+		}
+		
 	}
 
 	/**

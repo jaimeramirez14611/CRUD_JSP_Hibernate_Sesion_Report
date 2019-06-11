@@ -32,7 +32,19 @@ public class AddServiceController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/Views/Service/addService.jsp").forward(request, response);
+		String action = ValidateNullPointer.validateToString(request.getParameter("action"));
+		switch (action) {
+		case "add":
+			request.getRequestDispatcher("/Views/Service/addService.jsp").forward(request, response);
+			break;
+       case "list":
+    	   request.getRequestDispatcher("/Views/Service/ListServices.jsp").forward(request, response);
+			break;		
+
+		default:
+			break;
+		}
+		//request.getRequestDispatcher("/Views/Service/addService.jsp").forward(request, response);
 	}
 
 	/**

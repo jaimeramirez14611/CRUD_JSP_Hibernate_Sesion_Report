@@ -23,7 +23,7 @@
       <c:if test="${success != null}">
         	<c:out value="<section class='alert alert-success col-4 offset-4 text-center ' role='alert' id='alerta'> ${success} </section>" escapeXml="false"></c:out>
       </c:if>
-      <section>
+      <section> 
            <form action="/CRUD_JSP_Hibernate_Sesion_Report/addService" method="POST" class="col-8 offset-2" id="frmService">
 		  		<section class="form-group row">
 				    <label  class="col-2">Servcio</label>
@@ -41,15 +41,17 @@
 				    <textarea  class="form-control col-10" id="last_name" name="description"></textarea>
 				</section >
 				<section class="form-group row">
-				    <label  class="col-2">Usuario Code</label>
+				    <label  class="col-2">Usuario</label>
 				    <input type="number" class="form-control col-10"  name="customer">
 				</section>
-				
+			    
 				<input type="submit" class="btn btn-outline-success col-2 offset-4" value="Guardar">
 				<input type="reset" class="btn btn-outline-danger col-2" value="Reset">
-	     </form>
+	     </form>  
+       
       </section>
-     <!-- Ocultar alert -->
-	 <script type="text/javascript" src="resources/js/hideAlert.js" />
+    <!-- Ocultar alert -->
+    
+	<script type="text/javascript" src="resources/js/hideAlert.js" ></script>
 </body>
 </html>

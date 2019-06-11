@@ -21,6 +21,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	
 	private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 	
+	@Override
 	public Long saveCustomer(Customer customer) {
 		Session session = this.sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -44,6 +45,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		
 		 return customer;
 	}
+	
 	@Override
 	public List<Customer> findAllCustomers() {
 		// TODO Auto-generated method stub

@@ -18,6 +18,7 @@ public class ValidateNullPointer {
 		}
 		return string;
 	}
+	
 	public static int validateToInt(String string) {
 		int response = 0;
 		   //Regresa un ""    

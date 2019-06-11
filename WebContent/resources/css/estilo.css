@@ -1,5 +1,5 @@
 @charset "ISO-8859-1";
-#frmCustomer{
+#frmCustomer, #frmSearchServices{
 	    border: 1px solid silver; 
 	    padding:1%;
 	    padding-right:2%;
@@ -8,7 +8,8 @@
 	    color: black; 
 	}
 body{
-    background-color: #FDFDFD;
+    background-color: #FDFDFD;   
+  
 }
 .mt-fixed-nav{
     margin-top:10% !important;

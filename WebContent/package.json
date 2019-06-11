@@ -1,0 +1,16 @@
+{
+  "name": "webcontent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+      "gulp": "gulp"
+ },
+  "author": "",
+  "license": "ISC",
+  "devDependencies":{
+       "browser-sync": "^2.26.7"
+ 
+  }
+  
+}

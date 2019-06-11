@@ -1,0 +1,2 @@
+browser-sync start --proxy "localhost:8080/CRUD_JSP_Hibernate_Sesion_Report" --files "./**/**/*.*"
+browser-sync start --proxy "localhost:8080/CRUD_JSP_Hibernate_Sesion_Report" --files "Views/**/*.jsp, resources/**/*.*"
