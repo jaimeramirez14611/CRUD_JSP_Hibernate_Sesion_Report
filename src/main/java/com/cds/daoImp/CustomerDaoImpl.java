@@ -48,8 +48,9 @@ public class CustomerDaoImpl implements CustomerDao {
 	
 	@Override
 	public List<Customer> findAllCustomers() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = this.sessionFactory.openSession();
+		List<Customer> lista= (List<Customer>) session.createQuery("FROM Customer").list();
+		return lista;
 	}
 	@Override
 	public Long deleteCustomer(Long id) {
@@ -79,8 +80,12 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 	@Override
 	public Long updateCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = this.sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
+		session.update(customer);
+		transaction.commit();
+		session.close();
+		return 1l;	
 	}
 	public static void main(String[] args) {
 		/*test costumers add*/
@@ -89,8 +94,12 @@ public class CustomerDaoImpl implements CustomerDao {
 		long resultado = customerdao.saveCustomer(customer);
 		System.out.println(resultado);*/
 		
-		CustomerDaoImpl customerdao = new CustomerDaoImpl();
-		customerdao.deleteCustomer(3l);
+		CustomerDaoImpl customerdaoimp = new CustomerDaoImpl();
+		/*customerdao.deleteCustomer(3l);*/
+		for(Customer test: customerdaoimp.findAllCustomers()) {
+			System.out.println(test.getEmail());
+		}
+		
 			
 	}
 	

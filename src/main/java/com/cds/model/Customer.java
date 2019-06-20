@@ -52,6 +52,12 @@ public class Customer implements Serializable{
 		this.email = email;
 		this.mobile = mobile;
 	}
+	public Customer(long customer_id, String first_name, String last_name, String email, String mobile) {
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email = email;
+		this.mobile = mobile;
+	}
 
 	public Long getCustomer_id() {
 		return customer_id;

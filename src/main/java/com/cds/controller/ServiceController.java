@@ -18,12 +18,12 @@ import com.cds.util.ValidateNullPointer;
  * Servlet implementation class AddServiceController
  */
 @WebServlet("/addService")
-public class AddServiceController extends HttpServlet {
+public class ServiceController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddServiceController() {
+    public ServiceController() {
         super();  
         // TODO Auto-generated constructor stub
     }

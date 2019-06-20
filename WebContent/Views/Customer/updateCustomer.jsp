@@ -29,23 +29,14 @@
       
       <section>
            <form action="/CRUD_JSP_Hibernate_Sesion_Report/addCustomer" method="POST" class="col-8 offset-2" id="frmCustomer">
-		  		<section class="form-group row">
-				    <label  class="col-2">Nombres</label>
-				     <input type="hidden" value="add" name="option">
-				    <input type="text" class="form-control col-10" id="firs_name" name="first_name">
-				</section >
-				<section class="form-group row">
-				    <label  class="col-2">Apellidos</label>
-				    <input type="text" class="form-control col-10" id="last_name" name="last_name">
-				</section >
-				<section  class="form-group row">
-				    <label  class="col-2">Email:</label>
-				    <input type="email" class="form-control col-10" id="email" name="email">
-				</section>
-				<section  class="form-group row">
-				    <label  class="col-2">Telefono:</label>
-				    <input type="number" class="form-control col-10" id="mobile" name="mobile">
-				</section>
+		  		<c:forEach items="${datos}" var="customer">
+                   
+                    <section class="form-group">
+                        <label> Nombre: </label>
+                        <input type="text" name="first_name" class="form-control" value="${customer.first_name}">
+                    </section>            
+
+                </c:forEach>
 				
 				<input type="submit" class="btn btn-outline-success col-2 offset-4" value="Guardar">
 				<input type="reset" class="btn btn-outline-danger col-2" value="Reset">
