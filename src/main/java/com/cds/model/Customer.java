@@ -57,6 +57,7 @@ public class Customer implements Serializable{
 		this.last_name = last_name;
 		this.email = email;
 		this.mobile = mobile;
+		this.customer_id = customer_id;
 	}
 
 	public Long getCustomer_id() {

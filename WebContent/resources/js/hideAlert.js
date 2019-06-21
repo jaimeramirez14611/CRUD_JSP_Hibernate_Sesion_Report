@@ -9,5 +9,6 @@ let stateCheck = setInterval(() => {
 		    // document ready
 		    var el = document.getElementById("alerta");
 		    el.style.display = (el.style.display == 'none') ? 'block' : 'none';
+		    
 		  }
           }, 5000);

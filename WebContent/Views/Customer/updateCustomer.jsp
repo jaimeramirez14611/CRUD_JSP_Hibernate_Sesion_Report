@@ -14,7 +14,7 @@
       <!-- navbar -->
       <jsp:include page="../Componentes/navbar.jsp" />
       
-      <h1 class="text-center mt-fixed-nav">AGREGAR CUSTOMER</h1>
+      <h1 class="text-center mt-fixed-nav">MODIFICAR CUSTOMER</h1>
       
       <!-- Validacion de mensaje de error -->
       <c:if test="${error != null}">
@@ -24,24 +24,38 @@
       </c:if>
       
       <c:if test="${success != null}">
-        	<c:out value="<section class='alert alert-success col-4 offset-4 text-center ' role='alert' id='alerta'> ${success} </section>" escapeXml="false"></c:out>
+        	<section class="alert alert-success col-4 offset-4 text-center" role="alert" id="alerta"> ${success} </section>
+        	<a  class="btn btn-outline-success text-center col-4 offset-4" href="http://localhost:8080/CRUD_JSP_Hibernate_Sesion_Report/addCustomer?action=list">Retornal a la lista principal</a>
       </c:if>
-      
-      <section>
-           <form action="/CRUD_JSP_Hibernate_Sesion_Report/addCustomer" method="POST" class="col-8 offset-2" id="frmCustomer">
-		  		<c:forEach items="${datos}" var="customer">
-                   
-                    <section class="form-group">
-                        <label> Nombre: </label>
-                        <input type="text" name="first_name" class="form-control" value="${customer.first_name}">
-                    </section>            
-
-                </c:forEach>
-				
-				<input type="submit" class="btn btn-outline-success col-2 offset-4" value="Guardar">
-				<input type="reset" class="btn btn-outline-danger col-2" value="Reset">
-	     </form>
-      </section>
+      <c:if test="${success == null}">
+	      <section>
+	           <form action="/CRUD_JSP_Hibernate_Sesion_Report/addCustomer" method="POST" class="col-8 offset-2" id="frmCustomer">
+			  		<c:forEach items="${datos}" var="customer">
+	                     
+		                <section class="form-group row">
+						    <label  class="col-2">Nombres</label>
+						    <input type="hidden" class="form-control col-10" value="${customer.customer_id }" name="customer_id">
+						    <input type="hidden" value="update_data" name="option">
+						    <input type="text" class="form-control col-10" value="${customer.first_name}" name="first_name">
+						</section >
+						<section class="form-group row">
+						    <label  class="col-2">Apellidos</label>
+						    <input type="text" class="form-control col-10" value="${customer.last_name }" name="last_name">
+						</section >
+						<section  class="form-group row">
+						    <label  class="col-2">Email:</label>
+						    <input type="email" class="form-control col-10" value="${customer.email}" name="email">
+						</section>
+						<section  class="form-group row">
+						    <label  class="col-2">Telefono:</label>
+						    <input type="number" class="form-control col-10" value="${customer.mobile}" name="mobile">
+						</section>         	
+	                </c:forEach>
+					<input type="submit" class="btn btn-outline-success col-2 offset-4" value="Guardar">
+					<input type="reset" class="btn btn-outline-danger col-2" value="Reset">
+		     </form>
+	      </section>
+       </c:if>
       <!-- Ocultar alert -->
 	  <script type="text/javascript" src="resources/js/hideAlert.js" ></script>
 </body>

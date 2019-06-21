@@ -18,7 +18,7 @@ import com.cds.model.Customer;
 @WebServlet("/addCustomer")
 public class CustomerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private CustomerDaoImpl customerDao = new CustomerDaoImpl();
+	private CustomerDaoImpl customerDaoImp = new CustomerDaoImpl();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,10 +38,11 @@ public class CustomerController extends HttpServlet {
 			request.getRequestDispatcher("/Views/Customer/addCustomer.jsp").forward(request, response);
 			break;
        case "list":
-    	    request.setAttribute("customerList", customerDao.findAllCustomers());
+    	    request.setAttribute("customerList", customerDaoImp.findAllCustomers());
     	    request.getRequestDispatcher("/Views/Customer/listCustomer.jsp").forward(request, response);
 			break;	
 		default:
+			request.getRequestDispatcher("./Views/Customer/addCustomer.jsp").forward(request, response);
 			break;
 		}
 		
@@ -66,18 +67,27 @@ public class CustomerController extends HttpServlet {
 				}else {
 					Customer customer = new Customer(first_name, last_name, email, mobile);
 					
-				    customerDao.saveCustomer(customer);
+					customerDaoImp.saveCustomer(customer);
 					
 					request.setAttribute("success", "DATOS AGREGADOS DE FORMA SATISFACTORIA");
 				}
 				request.getRequestDispatcher("./Views/Customer/addCustomer.jsp").forward(request, response);
 			break;
-		case "delete":
-			 
-			
-			
+		case "delete_redirect":
+			 List<Customer> listaCustomerDelete = new ArrayList<Customer>();
+			 Customer customerDelete = new Customer();
+			 customerDelete.setCustomer_id(customer_id);
+			 customerDelete.setFirst_name(first_name);
+			 listaCustomerDelete.add( customerDelete);
+			 request.setAttribute("datos", listaCustomerDelete);
+			 request.getRequestDispatcher("./Views/Customer/deleteCustomer.jsp").forward(request, response);
 			break;
-		case "updateredirect":
+        case "delete":
+        	  customerDaoImp.deleteCustomer(customer_id);
+        	  request.setAttribute("success", "DATOS ELIMINADOS DE FORMA SATISFACTORIA");
+        	  request.getRequestDispatcher("./Views/Customer/deleteCustomer.jsp").forward(request, response);
+			break;	
+		case "update_redirect":
 			 List<Customer> listaCustomer = new ArrayList<Customer>();
              //Objeto                 //Set  datos
              Customer customer = new Customer(customer_id, first_name, last_name, email, mobile);
@@ -87,9 +97,12 @@ public class CustomerController extends HttpServlet {
              request.getRequestDispatcher("./Views/Customer/updateCustomer.jsp").forward(request, response);
 			break;
        case "update_data":
-			  
-			
-			break;	
+    	 //Objeto                 //Set  datos
+           Customer customerUpdate = new Customer(customer_id, first_name, last_name, email, mobile);
+    	   customerDaoImp.updateCustomer(customerUpdate);
+    	   request.setAttribute("success", "DATOS ACTUALIZADOS DE FORMA SATISFACTORIA");
+           request.getRequestDispatcher("./Views/Customer/updateCustomer.jsp").forward(request, response);
+		 break;	
 		default:
 			System.out.println(option);
 			break;

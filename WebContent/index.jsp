@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-           <h1>hola mundo desde china ff</h1>
+      <%
+           String redirectURL = "http://localhost:8080/CRUD_JSP_Hibernate_Sesion_Report/addCustomer?action=add";
+           response.sendRedirect(redirectURL);
+      %>
+      
 </body>
 </html>
