@@ -59,11 +59,11 @@ public class CustomerController extends HttpServlet {
 		String mobile = ValidateNullPointer.validateToString(request.getParameter("mobile"));
 		String option = ValidateNullPointer.validateToString(request.getParameter("option"));
 		long customer_id = ValidateNullPointer.validateToLong(request.getParameter("customer_id"));
-		System.out.println(option);
+		//System.out.println(option);
 		switch (option) {
 		case "add":
-				if(first_name.equals("") ||last_name.equals("") || email.equals("")||mobile.equals("")) {
-					  request.setAttribute("error", "ERROR: VERIFIQUE LOS CAMPOS INGRESADOS");
+				if(first_name.equals("") ||last_name.equals("") || email.equals("")||mobile.equals("")) {	 
+					request.setAttribute("error", "ERROR: VERIFIQUE LOS CAMPOS INGRESADOS");
 				}else {
 					Customer customer = new Customer(first_name, last_name, email, mobile);
 					

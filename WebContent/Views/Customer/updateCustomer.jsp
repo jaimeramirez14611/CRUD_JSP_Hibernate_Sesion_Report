@@ -31,7 +31,6 @@
 	      <section>
 	           <form action="/CRUD_JSP_Hibernate_Sesion_Report/addCustomer" method="POST" class="col-8 offset-2" id="frmCustomer">
 			  		<c:forEach items="${datos}" var="customer">
-	                     
 		                <section class="form-group row">
 						    <label  class="col-2">Nombres</label>
 						    <input type="hidden" class="form-control col-10" value="${customer.customer_id }" name="customer_id">

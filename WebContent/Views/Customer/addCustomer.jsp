@@ -31,7 +31,7 @@
            <form action="/CRUD_JSP_Hibernate_Sesion_Report/addCustomer" method="POST" class="col-8 offset-2" id="frmCustomer">
 		  		<section class="form-group row">
 				    <label  class="col-2">Nombres</label>
-				     <input type="hidden" value="add" name="option">
+				    <input type="hidden" value="add" name="option">
 				    <input type="text" class="form-control col-10" id="firs_name" name="first_name">
 				</section >
 				<section class="form-group row">
